@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PokemonGallery from '../view/compenents/PokemonDetails/PokemonDetails.tsx';
-import PokemonDetails from '../view/compenents/PokemonGallery/PokemonGallery.tsx';
+import HomePage from '../view/HomePage/HomePage';
+import DetailsPage from '../view/DetailsPage/DetailsPage';
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PokemonGallery />} />
-        <Route path="/pokemon/:id" element={<PokemonDetails />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/pokemon/:id" element={<DetailsPage />} />
       </Routes>
     </BrowserRouter>
   );

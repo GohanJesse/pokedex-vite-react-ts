@@ -1,0 +1,42 @@
+.pokemonCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: #EDEDED 0 10px 10px;
+    background-color: white;
+    padding: 15px;
+    margin: 10px;
+    margin-top: 60px;
+    padding-top: 40px;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.imgCardGallery {
+    position: absolute;
+    top: -55px;
+    image-rendering: pixelated;
+    transition-duration: 100ms;
+}
+
+.numberPokemonCard {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    color: #8F9396;
+}
+
+.namePokemonCard {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
