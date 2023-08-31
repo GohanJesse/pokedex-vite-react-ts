@@ -1,21 +1,12 @@
-import { useState, useEffect } from 'react';
 import Styles from './PokemonGallery.module.css';
 import { Pokemon } from '../../models/PokemonTypes';
-import { fetchAllPokemons } from '../../services/PokemonService';
 import PokemonCard from '../PokemonCard/PokemonCard';
 
-export default function PokemonGallery() {
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+type PokemonGalleryProps = {
+  pokemons: Pokemon[];
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchAllPokemons();
-      setPokemons(data);
-    };
-
-    fetchData();
-  }, []);
-
+export default function PokemonGallery({ pokemons }: PokemonGalleryProps) {
   return (
     <div className={Styles.pokemonGallery}>
       {pokemons.map(pokemon => (
