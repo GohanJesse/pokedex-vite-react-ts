@@ -1,3 +1,4 @@
+// import React from 'react';
 import Styles from './PokemonDetails.module.css';
 import { Pokemon } from '../../models/PokemonTypes';
 
@@ -63,6 +64,18 @@ export default function PokemonDetails({ pokemon }: PokemonDetailsProps) {
             <div className={Styles.evolutionLevelLast}>niv. 30</div>
             <img src="" alt="" />
           </div>
+          {/* <div className={Styles.rowCenter}>
+            {pokemon.evolutions.map((evolution, index) => (
+              <React.Fragment key={evolution.evolves_to}>
+                <img src={evolution.image} alt={evolution.evolves_to} />
+                {index !== pokemon.evolutions.length -1 && (
+                  <div className={index === 0 ? Styles.evolutionLevelFirst : Styles.evolutionLevelLast}>
+                    niv. {evolution.level}
+                  </div>
+                )}
+              </React.Fragment>
+            ))}
+          </div> */}
         </div>
 
       </div>

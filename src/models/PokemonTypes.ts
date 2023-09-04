@@ -11,7 +11,8 @@ export interface Pokemon {
   total_stats: number; 
   evolutions: {
     level: number;
-    evolves_to: string; 
+    evolves_to: string;
+    image: string;
   }[];
 }
 
