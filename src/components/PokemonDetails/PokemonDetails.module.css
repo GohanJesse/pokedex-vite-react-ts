@@ -1,0 +1,149 @@
+.modalDetails {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+    background-color: green;
+    height: 100vh;
+    position: relative;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+
+}
+
+.starReturn {
+    position: absolute;
+    top : 15px;
+    right: 15px;
+    height: 42px;
+    width: 42px;
+    border-radius: 10px;
+    background-color: #F6F8FC;
+    color: white;
+}
+
+.cardPokemonDetails {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px 20px 0 0;
+    height: 81vh;
+    width: 100%;
+    background-color: white;
+}
+
+.imagePokemonDetails {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 77vh;
+    margin-right: auto;
+    margin-left: auto;
+    object-fit: contain;
+    image-rendering: pixelated;
+    max-width: 350px;
+    max-height: 22vh;
+    /* height: 153px; */
+}
+
+.numberPokemon {
+    color: #8F9396;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+
+.pokemonCardName {
+    margin: 5px;
+    font-size: 24px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.linePokemonType {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.typeContainer {
+    border: solid 1px red;
+    border-radius: 5px;
+    padding: 3px 7px;
+    color: black;
+    margin: 5px;
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.descriptionPokemon {
+    color: #8F9396;
+}
+
+.linePhysic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.physicPoke {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    width: 100%;
+    background-color: #F6F8FC;
+    padding: 8px 0;
+    border-radius: 30px;
+    margin: 5px;
+}
+
+.linePhysic div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* border: solid 1px black; */
+}
+
+
+.lineCapacity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.containerCapacity {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.containerCapacity div {
+    width: 100%;
+    background-color: #F6F8FC;
+    padding: 8px 0;
+    border-radius: 30px;
+    margin: 5px;
+}
+
+.rowCenter {
+    display: flex;
+}
+
+.pokemonStatContainer {
+    background: #F6F8FC;
+    display: flex;
+    padding: 5px;
+    border-radius: 30px;
+    margin: 5px;
+    flex-direction: column;
+}
