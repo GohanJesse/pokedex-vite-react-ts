@@ -1,3 +1,16 @@
 .pokedex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    position: relative;
+}
+
+.decoPokeball {
+    width: 450px;
+    position: absolute;
+    top: -70px;
+    left: -165px;
+    z-index: -1;
 }

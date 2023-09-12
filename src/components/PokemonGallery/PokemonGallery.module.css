@@ -2,26 +2,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  width: 87%;
 }
 
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
   width: 100%;
+  height: auto;
 }
 
 .loader {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 120px;
 }
 
 .loader img {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   animation: spin 2s linear infinite;
 }
 

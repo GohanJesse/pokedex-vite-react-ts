@@ -36,6 +36,7 @@ const HomePage = () => {
 
   return (
     <div className={Styles.pokedex}>
+      <img className={Styles.decoPokeball} src="pokeball.png" alt="Déco Pokeball" />
       <SearchBar onSearch={handleSearch} />
       <PokemonGallery pokemons={filteredPokemons}/>
     </div>
