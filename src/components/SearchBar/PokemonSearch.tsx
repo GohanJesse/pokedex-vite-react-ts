@@ -29,7 +29,7 @@ export default function PokemonSearch({ onSearch }: PokemonSearchProps) {
         onChange={handleInputChange}
       />
       <div className={Styles.startSearch}>
-
+        <img src="loupe.png" alt="Rechercher" />
       </div>
     </div>
   )
