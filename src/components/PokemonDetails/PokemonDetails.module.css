@@ -3,7 +3,6 @@
     justify-content: end;
     align-items: center;
     flex-direction: column;
-    background-color: green;
     height: 100vh;
     position: relative;
     font-family: 'Outfit', sans-serif;
@@ -13,6 +12,9 @@
 
 .starReturn {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top : 15px;
     right: 15px;
     height: 42px;
@@ -20,6 +22,12 @@
     border-radius: 10px;
     background-color: #F6F8FC;
     color: white;
+    cursor: pointer;
+}
+
+.crossClose {
+    height: 20px;
+    width: 20px;
 }
 
 .cardPokemonDetails {
@@ -68,7 +76,6 @@
 }
 
 .typeContainer {
-    border: solid 1px red;
     border-radius: 5px;
     padding: 3px 7px;
     color: black;

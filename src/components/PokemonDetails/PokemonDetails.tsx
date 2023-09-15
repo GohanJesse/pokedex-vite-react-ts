@@ -1,17 +1,43 @@
-// import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Styles from './PokemonDetails.module.css';
-import { Pokemon } from '../../models/PokemonTypes';
+import { Pokemon, EvolutionChain, PokemonStat } from '../../models/PokemonTypes';
+import { PokemonTypeColors } from '../../models/PokemonTypes';
+import { PokemonSpecies } from '../../models/PokemonTypes';
+import { EvolutionDetail } from '../../models/PokemonTypes';
+
 
 type PokemonDetailsProps = {
   pokemon: Pokemon;
+  speciesDetails: PokemonSpecies;
+  evolutionChain: EvolutionChain | null;
 };
 
+const getPokemonImageUrl = (pokemonName: string): string => {
+  return `https://pokeapi.co/media/sprites/pokemon/${pokemonName}.png`;
+};
 
-export default function PokemonDetails({ pokemon }: PokemonDetailsProps) {
+const getEvolutionChain = (chain: EvolutionDetail): { name: string; image: string }[] => {
+  const evolutions: { name: string; image: string }[] = [{ name: chain.species.name, image: getPokemonImageUrl(chain.species.name) }];
+  if (chain.evolves_to.length) {
+    evolutions.push(...getEvolutionChain(chain.evolves_to[0]));
+  }
+  return evolutions;
+};
+
+export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain }: PokemonDetailsProps) {
+  const navigate = useNavigate();
+  const defaultFlavorTextEntry = speciesDetails?.flavor_text_entries[0];
+  const description = defaultFlavorTextEntry ? defaultFlavorTextEntry.flavor_text.replace(/\f|\n/g, ' ') : '';
+  const evolutionList = evolutionChain ? getEvolutionChain(evolutionChain.chain) : [];
+
+  const handleClose = () => {
+    navigate('/');
+  };
+
   return (
     <div className={Styles.modalDetails}>
-      <div className={Styles.starReturn}>
-        Croix
+      <div className={Styles.starReturn} onClick={handleClose}>
+        <img className={Styles.crossClose} src="/croix.png" alt="Fermer" />
       </div>
       <div className={Styles.cardPokemonDetails}>
         <img className={Styles.imagePokemonDetails} src={pokemon.sprites.front_default} alt={pokemon.name} />
@@ -19,13 +45,17 @@ export default function PokemonDetails({ pokemon }: PokemonDetailsProps) {
         <h2 className={Styles.pokemonCardName}>{pokemon.name}</h2>
         <div className={Styles.linePokemonType}>
           {pokemon.types.map(type => (
-            <div key={type.type.name} className={Styles.typeContainer}>
+            <div
+              key={type.type.name}
+              className={Styles.typeContainer}
+              style={{ backgroundColor: PokemonTypeColors[type.type.name] }}
+            >
               {type.type.name}
             </div>
           ))}
         </div>
         <h4>Entrée Pokédex</h4>
-        <span className={Styles.descriptionPokemon}>description</span>
+        <span className={Styles.descriptionPokemon}>{description}</span>
         <div className={Styles.linePhysic}>
           <div className={Styles.pokemonHeight}>
             <h4>taille</h4>
@@ -40,15 +70,15 @@ export default function PokemonDetails({ pokemon }: PokemonDetailsProps) {
           <h4>Capacités</h4>
           <div className={Styles.containerCapacity}>
             {pokemon.abilities.map(ability => (
-            <div key={ability.ability.name}>
-              {ability.ability.name}
-            </div>
-          ))}
+              <div key={ability.ability.name}>
+                {ability.ability.name}
+              </div>
+            ))}
           </div>
         </div>
         <h4>Statistiques</h4>
         <div className={Styles.rowCenter}>
-          {pokemon.stats.map(stat => (
+          {pokemon.stats.map((stat: PokemonStat) => (
             <div key={stat.stat.name} className={Styles.pokemonStatContainer}>
               <div className={Styles.pokemonStatName}>{stat.stat.name}</div>
               <div className={Styles.pokemonStat}>{stat.base_stat}</div>
@@ -58,27 +88,16 @@ export default function PokemonDetails({ pokemon }: PokemonDetailsProps) {
         <div className={Styles.evolutionContainer}>
           <h4>Évolution</h4>
           <div className={Styles.rowCenter}>
-            <img src="" alt="" />
-            <div className={Styles.evolutionLevelFirst}>niv. 15</div>
-            <img src="" alt="" />
-            <div className={Styles.evolutionLevelLast}>niv. 30</div>
-            <img src="" alt="" />
-          </div>
-          {/* <div className={Styles.rowCenter}>
-            {pokemon.evolutions.map((evolution, index) => (
-              <React.Fragment key={evolution.evolves_to}>
-                <img src={evolution.image} alt={evolution.evolves_to} />
-                {index !== pokemon.evolutions.length -1 && (
-                  <div className={index === 0 ? Styles.evolutionLevelFirst : Styles.evolutionLevelLast}>
-                    niv. {evolution.level}
-                  </div>
-                )}
-              </React.Fragment>
+            {evolutionList.map((evolution, index) => (
+              <div key={evolution.name}>
+                {index > 0 && <span> - </span>}
+                <img src={evolution.image} alt={evolution.name} />
+                <span>{evolution.name}</span>
+              </div>
             ))}
-          </div> */}
+          </div>
         </div>
-
       </div>
     </div>
-  )
+  );
 }

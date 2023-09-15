@@ -2,17 +2,56 @@ export interface Pokemon {
   id: number;
   name: string;
   types: { type: { name: PokemonType } }[];
-  sprites: { front_default: string };
-  pokedex_entry: string; 
-  height: number; 
-  weight: number; 
+  sprites: {
+    front_default: string;
+    versions: {
+      "generation-v": {
+        "black-white": {
+          front_default: string;
+          animated: {
+            front_default: string;
+          };
+        };
+      };
+    };
+  };
+  height: number;
+  weight: number;
   abilities: PokemonAbility[];
   stats: PokemonStat[];
-  total_stats: number; 
-  evolutions: {
-    level: number;
-    evolves_to: string;
-    image: string;
+  total_stats: number;
+  species: {
+    url: string;
+  };
+  evolutions?: EvolutionDetail[];
+}
+
+export interface PokemonSpecies {
+  flavor_text_entries: FlavorTextEntry[];
+  evolution_chain?: {
+    url: string;
+  };
+}
+
+export interface FlavorTextEntry {
+  flavor_text: string;
+  language: {
+    name: string;
+  };
+}
+
+export interface EvolutionChain {
+  chain: EvolutionDetail;
+}
+
+export interface EvolutionDetail {
+  species: {
+    name: string;
+    url: string;
+  };
+  evolves_to: EvolutionDetail[];
+  evolution_details: {
+    min_level: number;
   }[];
 }
 
@@ -43,8 +82,6 @@ export const PokemonTypeColors: Record<PokemonType, string> = {
   unknown: '#B6B6B6',
   shadow: '#705898'
 };
-
-
 
 export interface PokemonAbility {
   name: string;

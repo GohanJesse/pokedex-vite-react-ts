@@ -9,7 +9,7 @@
 
 .decoPokeball {
     width: 450px;
-    position: absolute;
+    position: fixed;
     top: -70px;
     left: -165px;
     z-index: -1;
