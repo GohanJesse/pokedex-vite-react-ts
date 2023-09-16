@@ -12,17 +12,43 @@ type PokemonDetailsProps = {
   evolutionChain: EvolutionChain | null;
 };
 
-const getPokemonImageUrl = (pokemonName: string): string => {
-  return `https://pokeapi.co/media/sprites/pokemon/${pokemonName}.png`;
+const getPokemonImageUrl = (pokemonId: string): string => {
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
 };
 
-const getEvolutionChain = (chain: EvolutionDetail): { name: string; image: string }[] => {
-  const evolutions: { name: string; image: string }[] = [{ name: chain.species.name, image: getPokemonImageUrl(chain.species.name) }];
+const getPokemonAnimatedImageUrl = (pokemonId: number): string => {
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemonId}.gif`;
+};
+
+
+const getEvolutionChain = (chain: EvolutionDetail): { id: number; name: string; image: string; minLevel: number | null }[] => {
+  const evolutions: { id: number; name: string; image: string; minLevel: number | null }[] = [{ id: Number(chain.species.url.split('/')[6]), name: chain.species.name, image: getPokemonImageUrl(chain.species.url.split('/')[6]), minLevel: null }];
   if (chain.evolves_to.length) {
-    evolutions.push(...getEvolutionChain(chain.evolves_to[0]));
+    const nextEvolution = getEvolutionChain(chain.evolves_to[0]);
+    nextEvolution[0].minLevel = chain.evolves_to[0].evolution_details[0].min_level;
+    evolutions.push(...nextEvolution);
   }
   return evolutions;
 };
+
+const getTotalStats = (stats: PokemonStat[]): number => {
+  return stats.reduce((total, stat) => total + stat.base_stat, 0);
+};
+
+const formatStatName = (name: string): string => {
+  const abbreviations: { [key: string]: string } = {
+    'hp': 'HP',
+    'attack': 'ATK',
+    'defense': 'DEF',
+    'special-attack': 'Spa',
+    'special-defense': 'SpD',
+    'speed': 'SPD'
+  };
+  return abbreviations[name] || name.toUpperCase();
+};
+
+
+
 
 export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain }: PokemonDetailsProps) {
   const navigate = useNavigate();
@@ -40,7 +66,7 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
         <img className={Styles.crossClose} src="/croix.png" alt="Fermer" />
       </div>
       <div className={Styles.cardPokemonDetails}>
-        <img className={Styles.imagePokemonDetails} src={pokemon.sprites.front_default} alt={pokemon.name} />
+      <img className={Styles.imagePokemonDetails} src={getPokemonAnimatedImageUrl(pokemon.id)} alt={pokemon.name} />
         <span className={Styles.numberPokemon}>N°{pokemon.id}</span>
         <h2 className={Styles.pokemonCardName}>{pokemon.name}</h2>
         <div className={Styles.linePokemonType}>
@@ -80,19 +106,22 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
         <div className={Styles.rowCenter}>
           {pokemon.stats.map((stat: PokemonStat) => (
             <div key={stat.stat.name} className={Styles.pokemonStatContainer}>
-              <div className={Styles.pokemonStatName}>{stat.stat.name}</div>
+              <div className={Styles.pokemonStatName}>{formatStatName(stat.stat.name)}</div>
               <div className={Styles.pokemonStat}>{stat.base_stat}</div>
             </div>
           ))}
+          <div className={Styles.pokemonStatContainer}>
+            <div className={Styles.pokemonStatName}>Total</div>
+            <div className={Styles.pokemonStat}>{getTotalStats(pokemon.stats)}</div>
+          </div>
         </div>
         <div className={Styles.evolutionContainer}>
           <h4>Évolution</h4>
           <div className={Styles.rowCenter}>
             {evolutionList.map((evolution, index) => (
-              <div key={evolution.name}>
-                {index > 0 && <span> - </span>}
+              <div key={evolution.id}>
+                {index > 0 && <span>Niv.{evolution.minLevel}</span>}
                 <img src={evolution.image} alt={evolution.name} />
-                <span>{evolution.name}</span>
               </div>
             ))}
           </div>
@@ -101,3 +130,6 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
     </div>
   );
 }
+
+
+
