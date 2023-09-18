@@ -47,6 +47,15 @@ const formatStatName = (name: string): string => {
   return abbreviations[name] || name.toUpperCase();
 };
 
+const statColors: { [key: string]: string } = {
+  'HP': '#DF2140',
+  'ATK': '#FF994D',
+  'DEF': '#eecd3d',
+  'Spa': '#85DDFF',
+  'SpD': '#96da83',
+  'SPD': '#FB94A8',
+  'TOT': '#7195DC'
+};
 
 
 
@@ -66,7 +75,7 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
         <img className={Styles.crossClose} src="/croix.png" alt="Fermer" />
       </div>
       <div className={Styles.cardPokemonDetails}>
-      <img className={Styles.imagePokemonDetails} src={getPokemonAnimatedImageUrl(pokemon.id)} alt={pokemon.name} />
+        <img className={Styles.imagePokemonDetails} src={getPokemonAnimatedImageUrl(pokemon.id)} alt={pokemon.name} />
         <span className={Styles.numberPokemon}>N°{pokemon.id}</span>
         <h2 className={Styles.pokemonCardName}>{pokemon.name}</h2>
         <div className={Styles.linePokemonType}>
@@ -80,7 +89,7 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
             </div>
           ))}
         </div>
-        <h4>Entrée Pokédex</h4>
+        <h4 className={Styles.titleDescription}>Entrée Pokédex</h4>
         <span className={Styles.descriptionPokemon}>{description}</span>
         <div className={Styles.linePhysic}>
           <div className={Styles.pokemonHeight}>
@@ -103,25 +112,25 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
           </div>
         </div>
         <h4>Statistiques</h4>
-        <div className={Styles.rowCenter}>
+        <div className={Styles.rowStat}>
           {pokemon.stats.map((stat: PokemonStat) => (
-            <div key={stat.stat.name} className={Styles.pokemonStatContainer}>
-              <div className={Styles.pokemonStatName}>{formatStatName(stat.stat.name)}</div>
-              <div className={Styles.pokemonStat}>{stat.base_stat}</div>
+            <div key={stat.stat.name} className={Styles.pokemonStatContainer} >
+              <div className={Styles.pokemonStatName} style={{ backgroundColor: statColors[formatStatName(stat.stat.name)] }}>{formatStatName(stat.stat.name)}</div>
+              <h5 className={Styles.pokemonStat} >{stat.base_stat}</h5>
             </div>
           ))}
-          <div className={Styles.pokemonStatContainer}>
-            <div className={Styles.pokemonStatName}>Total</div>
-            <div className={Styles.pokemonStat}>{getTotalStats(pokemon.stats)}</div>
+          <div className={Styles.pokemonStatContainerTotal}>
+            <div className={Styles.pokemonStatNameTotal}>TOT</div>
+            <h5 className={Styles.pokemonStat}>{getTotalStats(pokemon.stats)}</h5>
           </div>
         </div>
         <div className={Styles.evolutionContainer}>
           <h4>Évolution</h4>
-          <div className={Styles.rowCenter}>
+          <div className={Styles.evolutionBloc}>
             {evolutionList.map((evolution, index) => (
-              <div key={evolution.id}>
-                {index > 0 && <span>Niv.{evolution.minLevel}</span>}
-                <img src={evolution.image} alt={evolution.name} />
+              <div className={Styles.levelToBloc} key={evolution.id}>
+                {index > 0 && <span className={Styles.levelToSpan}>Niv.{evolution.minLevel}</span>}
+                <img className={Styles.pokemonEvolutionChainImg} src={evolution.image} alt={evolution.name} />
               </div>
             ))}
           </div>

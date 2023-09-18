@@ -15,6 +15,10 @@
     text-decoration: none;
 }
 
+.pokemonCard:hover {
+    border: solid 2px #EDEDED;   
+}
+
 .pokemonCard:hover .imgCardGallery {
     transform: scale(1.25);
     transition: transform 0.25s ease-in;

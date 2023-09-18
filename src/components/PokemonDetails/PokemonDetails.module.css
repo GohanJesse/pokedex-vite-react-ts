@@ -30,19 +30,32 @@
     width: 20px;
 }
 
+h4 {
+    color: #011030;
+    margin: 15px 5px 5px 5px;
+    text-align: center;
+}
+
 .cardPokemonDetails {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 20px 20px 0 0;
-    height: 81vh;
+    height: 82vh;
     width: 100%;
     background-color: white;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.cardPokemonDetails::-webkit-scrollbar {
+    display: none;
 }
 
 .imagePokemonDetails {
-    position: absolute;
+    position: fixed;
     right: 0;
     left: 0;
     bottom: 77vh;
@@ -52,14 +65,15 @@
     image-rendering: pixelated;
     max-width: 350px;
     max-height: 22vh;
-    /* height: 153px; */
+    height: 153px;
+    z-index: 2;
 }
 
 .numberPokemon {
     color: #8F9396;
     font-size: 12px;
     font-weight: bold;
-
+    margin-top: 6vh;
 }
 
 .pokemonCardName {
@@ -102,7 +116,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    width: 100%;
     background-color: #F6F8FC;
     padding: 8px 0;
     border-radius: 30px;
@@ -114,8 +127,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    /* border: solid 1px black; */
+    width: 80%;
+    padding-top: 5px;
 }
 
 
@@ -125,13 +138,15 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 5px;
+
 }
 
 .containerCapacity {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 95%;
 }
 
 .containerCapacity div {
@@ -142,15 +157,79 @@
     margin: 5px;
 }
 
-.rowCenter {
+.rowStat {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.pokemonStatContainer {
+.pokemonStatContainer, .pokemonStatContainerTotal {
     background: #F6F8FC;
     display: flex;
     padding: 5px;
     border-radius: 30px;
     margin: 5px;
     flex-direction: column;
+}
+
+.pokemonStatName, .pokemonStatNameTotal {
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+
+.pokemonStat {
+    font-size: 13px;
+    font-weight: bold;
+    margin: 6px 0;
+}
+
+.pokemonStatContainerTotal {
+    background-color: #88AAEA;
+}
+
+.pokemonStatNameTotal {
+    background-color: #7195DC;
+}
+
+
+.evolutionContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.evolutionBloc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.levelToBloc {
+    display: flex;
+    align-items: center;
+}
+
+.levelToSpan {
+    width: 50px;
+    background-color: #F6F8FC;
+    padding: 8px 0;
+    border-radius: 30px;
+    margin: 5px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pokemonEvolutionChainImg {
+    height: 74px;
 }

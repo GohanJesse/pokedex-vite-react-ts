@@ -40,8 +40,8 @@ export default function DetailsPage() {
   if (!pokemon || !speciesDetails) return <div>Loading...</div>;
 
   return (
-    <div 
-      className={Styles.modalDetailsPokemon} 
+    <div
+      className={Styles.modalDetailsPokemon}
       style={{ backgroundColor: pokemon.types[0] ? PokemonTypeColors[pokemon.types[0].type.name] : 'defaultColor' }}
     >
       <PokemonDetails pokemon={pokemon} speciesDetails={speciesDetails} evolutionChain={evolutionChain} />
