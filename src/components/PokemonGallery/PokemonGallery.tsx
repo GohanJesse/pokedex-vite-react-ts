@@ -5,9 +5,10 @@ import PokemonCard from '../PokemonCard/PokemonCard';
 
 type PokemonGalleryProps = {
   pokemons: Pokemon[];
+  onSelect: (pokemon: Pokemon) => void;
 };
 
-export default function PokemonGallery({ pokemons }: PokemonGalleryProps) {
+export default function PokemonGallery({ pokemons, onSelect }: PokemonGalleryProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,17 +16,6 @@ export default function PokemonGallery({ pokemons }: PokemonGalleryProps) {
       setIsLoading(false);
     }
   }, [pokemons]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight) {
-        window.scrollTo(0, 0); 
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className={Styles.pokemonGallery}>
@@ -41,7 +31,8 @@ export default function PokemonGallery({ pokemons }: PokemonGalleryProps) {
               image={pokemon.sprites.front_default}
               name={pokemon.name}
               number={pokemon.id}
-              types={pokemon.types.map(t => t.type.name)} 
+              types={pokemon.types.map(t => t.type.name)}
+              onClick={() => onSelect(pokemon)}
             />
           ))}
         </div>

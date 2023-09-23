@@ -16,7 +16,7 @@
 }
 
 .pokemonCard:hover {
-    border: solid 2px #EDEDED;   
+    border: solid 2px #e0e0e0;   
 }
 
 .pokemonCard:hover .imgCardGallery {

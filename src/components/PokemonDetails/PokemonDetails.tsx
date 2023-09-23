@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import Styles from './PokemonDetails.module.css';
 import { Pokemon, EvolutionChain, PokemonStat } from '../../models/PokemonTypes';
 import { PokemonTypeColors } from '../../models/PokemonTypes';
@@ -8,8 +7,9 @@ import { EvolutionDetail } from '../../models/PokemonTypes';
 
 type PokemonDetailsProps = {
   pokemon: Pokemon;
-  speciesDetails: PokemonSpecies;
-  evolutionChain: EvolutionChain | null;
+  speciesDetails?: PokemonSpecies | null;
+  evolutionChain?: EvolutionChain | null;
+  onClose: () => void;
 };
 
 const getPokemonImageUrl = (pokemonId: string): string => {
@@ -59,18 +59,18 @@ const statColors: { [key: string]: string } = {
 
 
 
-export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain }: PokemonDetailsProps) {
-  const navigate = useNavigate();
+export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain, onClose }: PokemonDetailsProps) {
+
   const defaultFlavorTextEntry = speciesDetails?.flavor_text_entries[0];
   const description = defaultFlavorTextEntry ? defaultFlavorTextEntry.flavor_text.replace(/\f|\n/g, ' ') : '';
   const evolutionList = evolutionChain ? getEvolutionChain(evolutionChain.chain) : [];
 
   const handleClose = () => {
-    navigate('/');
+    onClose();
   };
 
   return (
-    <div className={Styles.modalDetails}>
+    <div className={Styles.modalDetails} style={{ backgroundColor: PokemonTypeColors[pokemon.types[0].type.name] }}>
       <div className={Styles.starReturn} onClick={handleClose}>
         <img className={Styles.crossClose} src="/croix.png" alt="Fermer" />
       </div>

@@ -1,5 +1,4 @@
 import Styles from './PokemonCard.module.css';
-import { Link } from 'react-router-dom';
 import { PokemonType, PokemonTypeColors } from '../../models/PokemonTypes';
 
 type PokemonCardProps = {
@@ -7,11 +6,12 @@ type PokemonCardProps = {
   name: string;
   number: number;
   types: PokemonType[];
+  onClick?: () => void;
 };
 
-export default function PokemonCard({ image, name, number, types }: PokemonCardProps) {
+export default function PokemonCard({ image, name, number, types, onClick }: PokemonCardProps) {
   return (
-    <Link to={`/pokemon/${number}`} className={Styles.pokemonCard}>
+    <div className={Styles.pokemonCard} onClick={onClick}>
       <img className={Styles.imgCardGallery} src={image} alt={name} />
       <p className={Styles.numberPokemonCard}>N°{number}</p>
       <h3 className={Styles.namePokemonCard}>{name}</h3>
@@ -29,7 +29,7 @@ export default function PokemonCard({ image, name, number, types }: PokemonCardP
           );
         })}
       </div>
-    </Link>
+    </div>
   );
 }
 
