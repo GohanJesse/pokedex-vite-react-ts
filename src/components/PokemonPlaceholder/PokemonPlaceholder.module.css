@@ -1,36 +1,36 @@
 .pokemonPlaceholder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 320px;
-    margin: 10px;
-    height: 82vh;
-    position: fixed;
-    right: calc(10vw - 20px);
-    padding: 0 15px;
-    bottom: 0;
-    margin-bottom: 0;
-    border-radius: 20px 20px 0 0;
-    box-shadow: #EDEDED 0 10px 10px;
-    background-color: white;
-    z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  margin: 10px;
+  height: 82vh;
+  position: fixed;
+  right: calc(10vw - 20px);
+  padding: 0 15px;
+  bottom: 0;
+  margin-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  box-shadow: #ededed 0 10px 10px;
+  background-color: white;
+  z-index: 0;
 }
 
 .placeholderPokemonDetails {
-    color: #8F9396;
-    font-size: 18px !important;
-    text-align: center;
+  color: #8f9396;
+  font-size: 18px !important;
+  text-align: center;
 }
 
 .pikachuPlaceholder {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 77vh;
-    margin-right: auto;
-    margin-left: auto;
-    object-fit: contain;
-    image-rendering: pixelated;
-    max-width: 350px;
-    max-height: 22vh;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 77vh;
+  margin-right: auto;
+  margin-left: auto;
+  object-fit: contain;
+  image-rendering: pixelated;
+  /* max-width: 350px; */
+  max-height: 22vh;
 }

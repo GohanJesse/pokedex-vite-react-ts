@@ -9,7 +9,12 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  height: auto;
+  height: 80vh;
+  overflow: auto;
+}
+
+.gridContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .loader {

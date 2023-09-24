@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Styles from './PokemonSearch.module.css';
+import { motion } from 'framer-motion';
 
 type PokemonSearchProps = {
   onSearch: (name: string) => void;
@@ -20,10 +21,15 @@ export default function PokemonSearch({ onSearch }: PokemonSearchProps) {
 
 
   return (
-    <div className={Styles.searchBar}>
-      <input 
-        className={Styles.inputSearch} 
-        placeholder="Recherchez votre Pokémon" 
+    <motion.div
+      className={Styles.searchBar}
+      initial={{ y: '-100%' }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <input
+        className={Styles.inputSearch}
+        placeholder="Recherchez votre Pokémon"
         type="text"
         value={searchName}
         onChange={handleInputChange}
@@ -31,6 +37,6 @@ export default function PokemonSearch({ onSearch }: PokemonSearchProps) {
       <div className={Styles.startSearch}>
         <img src="loupe.png" alt="Rechercher" />
       </div>
-    </div>
+    </motion.div>
   )
 }

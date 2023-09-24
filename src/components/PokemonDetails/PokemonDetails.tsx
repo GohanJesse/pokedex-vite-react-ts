@@ -3,6 +3,8 @@ import { Pokemon, EvolutionChain, PokemonStat } from '../../models/PokemonTypes'
 import { PokemonTypeColors } from '../../models/PokemonTypes';
 import { PokemonSpecies } from '../../models/PokemonTypes';
 import { EvolutionDetail } from '../../models/PokemonTypes';
+import { motion } from 'framer-motion';
+import { useMediaQuery } from 'react-responsive';
 
 
 type PokemonDetailsProps = {
@@ -10,6 +12,7 @@ type PokemonDetailsProps = {
   speciesDetails?: PokemonSpecies | null;
   evolutionChain?: EvolutionChain | null;
   onClose: () => void;
+  isOpen: boolean;
 };
 
 const getPokemonImageUrl = (pokemonId: string): string => {
@@ -19,7 +22,6 @@ const getPokemonImageUrl = (pokemonId: string): string => {
 const getPokemonAnimatedImageUrl = (pokemonId: number): string => {
   return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemonId}.gif`;
 };
-
 
 const getEvolutionChain = (chain: EvolutionDetail): { id: number; name: string; image: string; minLevel: number | null }[] => {
   const evolutions: { id: number; name: string; image: string; minLevel: number | null }[] = [{ id: Number(chain.species.url.split('/')[6]), name: chain.species.name, image: getPokemonImageUrl(chain.species.url.split('/')[6]), minLevel: null }];
@@ -59,21 +61,52 @@ const statColors: { [key: string]: string } = {
 
 
 
-export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain, onClose }: PokemonDetailsProps) {
+
+export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain, onClose, isOpen }: PokemonDetailsProps) {
 
   const defaultFlavorTextEntry = speciesDetails?.flavor_text_entries[0];
   const description = defaultFlavorTextEntry ? defaultFlavorTextEntry.flavor_text.replace(/\f|\n/g, ' ') : '';
   const evolutionList = evolutionChain ? getEvolutionChain(evolutionChain.chain) : [];
+  const isDesktop = useMediaQuery({ query: '(min-width: 1100px)' });
+
 
   const handleClose = () => {
     onClose();
   };
 
+  const desktopAnimation = {
+    initial: { x: '0' },
+    animate: { x: 0 },
+    exit: { x: '0' },
+    transition: { duration: 0 },
+    delay: 1
+  };
+
+  const mobileAnimation = {
+    initial: { y: '100%' },
+    animate: { y: 0 },
+    exit: { y: '100%' },
+    transition: { duration: 0.5 }
+  };
+
+  const animationProps = isDesktop ? desktopAnimation : mobileAnimation;
+
+
+
   return (
-    <div className={Styles.modalDetails} style={{ backgroundColor: PokemonTypeColors[pokemon.types[0].type.name] }}>
-      <div className={Styles.starReturn} onClick={handleClose}>
-        <img className={Styles.crossClose} src="/croix.png" alt="Fermer" />
-      </div>
+    <motion.div
+      className={Styles.modalDetails}
+      style={{
+        backgroundColor: isDesktop ? 'transparent' : PokemonTypeColors[pokemon.types[0].type.name],
+        zIndex: isOpen ? 2 : 3,
+      }}
+      {...animationProps}
+    >
+      {!isDesktop && (
+        <div className={Styles.starReturn} onClick={handleClose}>
+          <img className={Styles.crossClose} src="/croix.png" alt="Fermer" />
+        </div>
+      )}
       <div className={Styles.cardPokemonDetails}>
         <img className={Styles.imagePokemonDetails} src={getPokemonAnimatedImageUrl(pokemon.id)} alt={pokemon.name} />
         <span className={Styles.numberPokemon}>N°{pokemon.id}</span>
@@ -136,7 +169,7 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

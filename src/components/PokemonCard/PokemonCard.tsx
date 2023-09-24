@@ -19,7 +19,7 @@ export default function PokemonCard({ image, name, number, types, onClick }: Pok
         {types.map((type, index) => {
           const bgColor = PokemonTypeColors[type];
           return (
-            <span 
+            <span
               key={index}
               className={Styles.type}
               style={{ backgroundColor: bgColor }}

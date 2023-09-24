@@ -7,7 +7,7 @@ function capitalizeFirstLetter(string: string): string {
 }
 
 export const fetchAllPokemons = async (): Promise<Pokemon[]> => {
-const limit = 151;
+const limit = 30;
 const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`);
 const data: { results: { url: string }[] } = await response.json();
 const pokemonPromises = data.results.map(async (pokemon) => {

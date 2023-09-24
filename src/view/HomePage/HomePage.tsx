@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Pokemon, PokemonSpecies, EvolutionChain } from '../../models/PokemonTypes';
 import { fetchAllPokemons, fetchPokemonSpecies, fetchPokemonEvolutionChain } from '../../services/PokemonService';
+import { AnimatePresence } from 'framer-motion';
 import PokemonGallery from '../../components/PokemonGallery/PokemonGallery';
 import SearchBar from '../../components/SearchBar/PokemonSearch';
 import PokemonDetails from '../../components/PokemonDetails/PokemonDetails';
@@ -15,7 +16,6 @@ const HomePage = () => {
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
   const [speciesDetails, setSpeciesDetails] = useState<PokemonSpecies | null>(null);
   const [evolutionChain, setEvolutionChain] = useState<EvolutionChain | null>(null);
-  const leftColumnRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = (name: string) => {
     setSearchTerm(name);
@@ -49,57 +49,39 @@ const HomePage = () => {
     }
   }, [searchTerm, allPokemons]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const leftColumn = leftColumnRef.current;
-      if (leftColumn) {
-        const { scrollHeight, scrollTop, clientHeight } = leftColumn;
-        if (scrollTop + clientHeight >= scrollHeight) {
-          leftColumn.scrollTo(0, 0);
-        }
-      }
-    };
-
-    const leftColumn = leftColumnRef.current;
-    if (leftColumn) {
-      leftColumn.addEventListener('scroll', handleScroll);
-    }
-
-    return () => {
-      if (leftColumn) {
-        leftColumn.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, []);
-
   const handlePokemonSelect = (pokemon: Pokemon) => {
     setSelectedPokemon(pokemon);
   };
 
   const handleCloseDetails = () => {
+    console.log("Closing details");
     setSelectedPokemon(null);
   };
 
 
   return (
     <div className={Styles.pokedex}>
-      <img className={Styles.decoPokeball} src="pokeball.png" alt="Déco Pokeball" />
       <div className={Styles.contentWrapper}>
-        <div ref={leftColumnRef} className={`${Styles.leftColumn} ${!selectedPokemon ? Styles.active : ''}`}>
+        <div className={`${Styles.leftColumn} ${!selectedPokemon ? Styles.active : ''}`}>
+          <img className={Styles.decoPokeball} src="pokeball.png" alt="Déco Pokeball" />
           <SearchBar onSearch={handleSearch} />
           <PokemonGallery pokemons={filteredPokemons} onSelect={handlePokemonSelect} />
         </div>
         <div className={`${Styles.pokemonDetailsWrapper} ${selectedPokemon ? Styles.active : ''}`}>
-          {selectedPokemon ? (
-            <PokemonDetails
-              pokemon={selectedPokemon}
-              onClose={handleCloseDetails}
-              speciesDetails={speciesDetails}
-              evolutionChain={evolutionChain}
-            />
-          ) : (
-            <PokemonPlaceholder className={Styles.pokemonPlaceholderHidden} />
-          )}
+          <AnimatePresence>
+            {selectedPokemon ? (
+              <PokemonDetails
+                key={selectedPokemon.id}
+                pokemon={selectedPokemon}
+                onClose={handleCloseDetails}
+                speciesDetails={speciesDetails}
+                evolutionChain={evolutionChain}
+                isOpen={!!selectedPokemon}
+              />
+            ) : (
+              <PokemonPlaceholder className={Styles.pokemonPlaceholderHidden} />
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>

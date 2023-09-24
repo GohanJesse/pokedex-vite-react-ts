@@ -4,9 +4,12 @@ body {
   min-width: 320px;
   min-height: 100vh;
   width: 100%;
-  background: #F6F8FC;
+  background: #f6f8fc;
   padding: 0 10vw;
-
+  /* background-image: url(/public/Pokedex.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
 }
 
 #root {
@@ -17,7 +20,7 @@ body {
   text-align: center;
   width: 100%;
   color-scheme: light dark;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 #appRouter {
@@ -34,9 +37,12 @@ body {
   flex-direction: column;
 }
 
-
 @media (max-width: 1100px) {
   body {
     padding: 0;
+    /* background-image: url(/public/PokedexMobile.png);
+    background-size: 80vh;
+    background-position: center;
+    background-repeat: no-repeat; */
   }
 }
