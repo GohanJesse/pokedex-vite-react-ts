@@ -1,7 +1,4 @@
 .pokemonGallery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
 }
 
@@ -18,9 +15,6 @@
 }
 
 .loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-top: 120px;
 }
 

@@ -22,7 +22,7 @@ export default function PokemonSearch({ onSearch }: PokemonSearchProps) {
 
   return (
     <motion.div
-      className={Styles.searchBar}
+      className={`${Styles.searchBar} flex`}
       initial={{ y: '-100%' }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -34,7 +34,7 @@ export default function PokemonSearch({ onSearch }: PokemonSearchProps) {
         value={searchName}
         onChange={handleInputChange}
       />
-      <div className={Styles.startSearch}>
+      <div className={`${Styles.startSearch} flexCenter`}>
         <img src="loupe.png" alt="Rechercher" />
       </div>
     </motion.div>

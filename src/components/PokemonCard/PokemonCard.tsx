@@ -11,11 +11,11 @@ type PokemonCardProps = {
 
 export default function PokemonCard({ image, name, number, types, onClick }: PokemonCardProps) {
   return (
-    <div className={Styles.pokemonCard} onClick={onClick}>
+    <div className={`${Styles.pokemonCard} flex column`} onClick={onClick}>
       <img className={Styles.imgCardGallery} src={image} alt={name} />
-      <p className={Styles.numberPokemonCard}>N°{number}</p>
+      <p className={Styles.numberPokemonCard}>N° {number}</p>
       <h3 className={Styles.namePokemonCard}>{name}</h3>
-      <div className={Styles.typeContainer}>
+      <div className={`${Styles.typeContainer} flexCenter`}>
         {types.map((type, index) => {
           const bgColor = PokemonTypeColors[type];
           return (
@@ -29,7 +29,7 @@ export default function PokemonCard({ image, name, number, types, onClick }: Pok
           );
         })}
       </div>
-    </div>
+    </div >
   );
 }
 

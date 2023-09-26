@@ -60,9 +60,9 @@ const HomePage = () => {
 
 
   return (
-    <div className={Styles.pokedex}>
-      <div className={Styles.contentWrapper}>
-        <div className={`${Styles.leftColumn} ${!selectedPokemon ? Styles.active : ''}`}>
+    <div className={`${Styles.pokedex} flexCenter`}>
+      <div className={`${Styles.contentWrapper} flex`}>
+        <div className={`${Styles.leftColumn} flex column ${!selectedPokemon ? Styles.active : ''}`}>
           <img className={Styles.decoPokeball} src="pokeball.png" alt="Déco Pokeball" />
           <SearchBar onSearch={handleSearch} />
           <PokemonGallery pokemons={filteredPokemons} onSelect={handlePokemonSelect} />

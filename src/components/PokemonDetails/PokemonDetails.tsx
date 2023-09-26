@@ -95,7 +95,7 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
 
   return (
     <motion.div
-      className={Styles.modalDetails}
+      className={`${Styles.modalDetails} flex column`}
       style={{
         backgroundColor: isDesktop ? 'transparent' : PokemonTypeColors[pokemon.types[0].type.name],
         zIndex: isOpen ? 2 : 3,
@@ -103,15 +103,15 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
       {...animationProps}
     >
       {!isDesktop && (
-        <div className={Styles.starReturn} onClick={handleClose}>
+        <div className={`${Styles.starReturn} flexCenter`} onClick={handleClose}>
           <img className={Styles.crossClose} src="/croix.png" alt="Fermer" />
         </div>
       )}
-      <div className={Styles.cardPokemonDetails}>
+      <div className={`${Styles.cardPokemonDetails} flex column`}>
         <img className={Styles.imagePokemonDetails} src={getPokemonAnimatedImageUrl(pokemon.id)} alt={pokemon.name} />
         <span className={Styles.numberPokemon}>N°{pokemon.id}</span>
         <h2 className={Styles.pokemonCardName}>{pokemon.name}</h2>
-        <div className={Styles.linePokemonType}>
+        <div className={`${Styles.linePokemonType} flex`}>
           {pokemon.types.map(type => (
             <div
               key={type.type.name}
@@ -124,19 +124,19 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
         </div>
         <h4 className={Styles.titleDescription}>Entrée Pokédex</h4>
         <span className={Styles.descriptionPokemon}>{description}</span>
-        <div className={Styles.linePhysic}>
-          <div className={Styles.pokemonHeight}>
-            <h4>taille</h4>
+        <div className={`${Styles.linePhysic} flexCenter`}>
+          <div className={`${Styles.pokemonHeight} flexCenter column`}>
+            <h4>Taille</h4>
             <div className={Styles.physicPoke}>{pokemon.height / 10}</div>
           </div>
-          <div className={Styles.pokemonWeight}>
+          <div className={`${Styles.pokemonWeight} flexCenter column`}>
             <h4>Poids</h4>
             <div className={Styles.physicPoke}>{pokemon.weight / 10}</div>
           </div>
         </div>
-        <div className={Styles.lineCapacity}>
+        <div className={`${Styles.lineCapacity} flexCenter column`}>
           <h4>Capacités</h4>
-          <div className={Styles.containerCapacity}>
+          <div className={`${Styles.containerCapacity} flex`}>
             {pokemon.abilities.map(ability => (
               <div key={ability.ability.name}>
                 {ability.ability.name}
@@ -145,23 +145,23 @@ export default function PokemonDetails({ pokemon, speciesDetails, evolutionChain
           </div>
         </div>
         <h4>Statistiques</h4>
-        <div className={Styles.rowStat}>
+        <div className={`${Styles.rowStat} flexCenter`}>
           {pokemon.stats.map((stat: PokemonStat) => (
-            <div key={stat.stat.name} className={Styles.pokemonStatContainer} >
-              <div className={Styles.pokemonStatName} style={{ backgroundColor: statColors[formatStatName(stat.stat.name)] }}>{formatStatName(stat.stat.name)}</div>
+            <div key={stat.stat.name} className={`${Styles.pokemonStatContainer} flex column`} >
+              <div className={`${Styles.pokemonStatName} flexCenter`} style={{ backgroundColor: statColors[formatStatName(stat.stat.name)] }}>{formatStatName(stat.stat.name)}</div>
               <h5 className={Styles.pokemonStat} >{stat.base_stat}</h5>
             </div>
           ))}
-          <div className={Styles.pokemonStatContainerTotal}>
-            <div className={Styles.pokemonStatNameTotal}>TOT</div>
+          <div className={`${Styles.pokemonStatContainerTotal} flex column`}>
+            <div className={`${Styles.pokemonStatNameTotal} flexCenter`}>TOT</div>
             <h5 className={Styles.pokemonStat}>{getTotalStats(pokemon.stats)}</h5>
           </div>
         </div>
-        <div className={Styles.evolutionContainer}>
+        <div className={`${Styles.evolutionContainer} flexCenter column`}>
           <h4>Évolution</h4>
-          <div className={Styles.evolutionBloc}>
+          <div className={`${Styles.evolutionBloc} flexCenter`}>
             {evolutionList.map((evolution, index) => (
-              <div className={Styles.levelToBloc} key={evolution.id}>
+              <div className={`${Styles.levelToBloc} flex`} key={evolution.id}>
                 {index > 0 && <span className={Styles.levelToSpan}>Niv.{evolution.minLevel}</span>}
                 <img className={Styles.pokemonEvolutionChainImg} src={evolution.image} alt={evolution.name} />
               </div>

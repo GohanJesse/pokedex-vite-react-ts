@@ -1,6 +1,4 @@
 .modalDetails {
-  display: flex;
-  flex-direction: column;
   justify-content: end;
   align-items: center;
   height: 100vh;
@@ -9,12 +7,8 @@
   font-size: 16px;
   width: 350px;
 }
-
 .starReturn {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   top: 15px;
   right: 15px;
   height: 42px;
@@ -24,22 +18,16 @@
   color: white;
   cursor: pointer;
 }
-
 .crossClose {
   height: 20px;
   width: 20px;
 }
-
 h4 {
   color: #011030;
   margin: 15px 5px 5px 5px;
   text-align: center;
 }
-
 .cardPokemonDetails {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border-radius: 20px 20px 0 0;
   height: 82vh;
   width: 100%;
@@ -48,11 +36,9 @@ h4 {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
 .cardPokemonDetails::-webkit-scrollbar {
   display: none;
 }
-
 .imagePokemonDetails {
   position: absolute;
   right: 0;
@@ -67,27 +53,22 @@ h4 {
   height: 153px;
   z-index: 2;
 }
-
 .numberPokemon {
   color: #8f9396;
   font-size: 12px;
   font-weight: bold;
   margin-top: 6vh;
 }
-
 .pokemonCardName {
   margin: 5px;
   font-size: 24px;
   width: 100%;
   font-weight: bold;
 }
-
 .linePokemonType {
-  display: flex;
   justify-content: center;
   width: 100%;
 }
-
 .typeContainer {
   border-radius: 5px;
   padding: 3px 7px;
@@ -98,54 +79,34 @@ h4 {
   font-size: 14px;
   opacity: 0.8;
 }
-
 .descriptionPokemon {
   color: #8f9396;
 }
-
 .linePhysic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  gap: 10px;
 }
-
+.pokemonHeight,
+.pokemonWeight {
+  width: 45%;
+  padding-top: 5px;
+}
 .physicPoke {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   background-color: #f6f8fc;
   padding: 8px 0;
   border-radius: 30px;
   margin: 5px;
 }
-
-.linePhysic div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  padding-top: 5px;
-}
-
 .lineCapacity {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   margin-top: 5px;
 }
-
 .containerCapacity {
-  display: flex;
   justify-content: space-around;
   align-items: center;
   width: 95%;
 }
-
 .containerCapacity div {
   width: 100%;
   background-color: #f6f8fc;
@@ -153,23 +114,13 @@ h4 {
   border-radius: 30px;
   margin: 5px;
 }
-
-.rowStat {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .pokemonStatContainer,
 .pokemonStatContainerTotal {
   background: #f6f8fc;
-  display: flex;
   padding: 5px;
   border-radius: 30px;
   margin: 5px;
-  flex-direction: column;
 }
-
 .pokemonStatName,
 .pokemonStatNameTotal {
   border-radius: 50%;
@@ -177,45 +128,25 @@ h4 {
   width: 25px;
   color: white;
   font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 10px;
 }
-
 .pokemonStat {
   font-size: 13px;
   font-weight: bold;
   margin: 6px 0;
 }
-
 .pokemonStatContainerTotal {
   background-color: #88aaea;
 }
-
 .pokemonStatNameTotal {
   background-color: #7195dc;
 }
-
 .evolutionContainer {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  align-items: center;
-  justify-content: center;
 }
-
-.evolutionBloc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .levelToBloc {
-  display: flex;
   align-items: center;
 }
-
 .levelToSpan {
   width: 50px;
   background-color: #f6f8fc;
@@ -227,11 +158,9 @@ h4 {
   font-weight: bold;
   text-align: center;
 }
-
 .pokemonEvolutionChainImg {
   height: 74px;
 }
-
 @media (max-width: 1100px) {
   .modalDetails {
     position: fixed;
@@ -239,5 +168,10 @@ h4 {
     left: 0;
     width: 100%;
     height: 100vh;
+  }
+  .pokemonHeight,
+  .pokemonWeight {
+    width: 46%;
+    padding-top: 5px;
   }
 }

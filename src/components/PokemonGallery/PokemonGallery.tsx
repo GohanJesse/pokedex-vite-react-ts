@@ -49,9 +49,9 @@ export default function PokemonGallery({ pokemons, onSelect }: PokemonGalleryPro
   }, []);
 
   return (
-    <div className={Styles.pokemonGallery}>
+    <div className={`${Styles.pokemonGallery} flexCenter`}>
       {isLoading ? (
-        <div className={Styles.loader}>
+        <div className={`${Styles.loader} flexCenter`}>
           <img src="pokeball.png" alt="Loading..." />
         </div>
       ) : (
