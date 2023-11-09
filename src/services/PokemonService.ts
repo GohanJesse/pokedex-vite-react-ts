@@ -31,12 +31,9 @@ export const fetchAllPokemons = async (): Promise<Pokemon[]> => {
         return pokemonJson;
       } catch (error) {
         console.error("Erreur lors de la récupération d'un Pokémon:", error);
-        // Gérer l'erreur ou renvoyer une valeur par défaut/erreur spécifique
-        // Exemple : renvoyer 'null' ou continuer avec les autres
-        // throw error; // ou return null;
       }
     });
-    // Filtrez les valeurs null si vous décidez de renvoyer 'null' en cas d'erreur
+
     return (await Promise.all(pokemonPromises)).filter(
       (pokemon) => pokemon !== null
     );

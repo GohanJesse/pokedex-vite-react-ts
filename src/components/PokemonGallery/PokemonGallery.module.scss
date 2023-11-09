@@ -49,12 +49,10 @@
     height: 80vh;
     overflow: auto;
 
-    // Suppression du scrollbar pour les navigateurs Webkit.
     &::-webkit-scrollbar {
       display: none;
     }
 
-    // Adaptation responsive pour les écrans plus petits.
     @media (max-width: 685px) {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -71,7 +69,6 @@
   }
 }
 
-// Keyframes pour l'animation de rotation.
 @keyframes spin {
   0% {
     transform: rotate(0deg);

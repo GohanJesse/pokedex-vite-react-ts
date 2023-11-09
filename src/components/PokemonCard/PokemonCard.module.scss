@@ -70,7 +70,7 @@
 //   background: #78cd54;
 // }
 
-// Variables pour les couleurs et les dimensions réutilisables
+// Variables
 $white: #ffffff;
 $shadow-color: #ededed;
 $border-hover: #e0e0e0;
@@ -162,6 +162,5 @@ $font-stack: "Outfit", sans-serif;
   border-radius: 5px;
   background-color: $type-background;
   text-transform: capitalize;
-  // Surcharge de la couleur de fond pour `.type` si nécessaire
   background: $type-color;
 }
