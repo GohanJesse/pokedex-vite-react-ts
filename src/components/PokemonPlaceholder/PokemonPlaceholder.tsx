@@ -1,5 +1,5 @@
-import Styles from './PokemonPlaceholder.module.css';
 import { motion } from 'framer-motion';
+import Styles from './PokemonPlaceholder.module.scss';
 
 type PokemonPlaceholderProps = {
   className?: string;

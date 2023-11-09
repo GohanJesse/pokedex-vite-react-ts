@@ -6,47 +6,32 @@ body {
   width: 100%;
   background: #f6f8fc;
   padding: 0 10vw;
-  /* background-image: url(/public/Pokedex.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
 }
-
 #root {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1280px;
   text-align: center;
   width: 100%;
   color-scheme: light dark;
   font-family: "Outfit", sans-serif;
 }
-
 #appRouter {
   width: 100%;
 }
-
 .flexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .flex {
   display: flex;
 }
-
 .column {
   flex-direction: column;
 }
-
 @media (max-width: 1100px) {
   body {
     padding: 0;
-    /* background-image: url(/public/PokedexMobile.png);
-    background-size: 80vh;
-    background-position: center;
-    background-repeat: no-repeat; */
   }
 }

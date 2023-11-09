@@ -6,7 +6,7 @@ import PokemonGallery from '../../components/PokemonGallery/PokemonGallery';
 import SearchBar from '../../components/SearchBar/PokemonSearch';
 import PokemonDetails from '../../components/PokemonDetails/PokemonDetails';
 import PokemonPlaceholder from '../../components/PokemonPlaceholder/PokemonPlaceholder';
-import Styles from './HomePage.module.css';
+import Styles from './HomePage.module.scss';
 
 const HomePage = () => {
 

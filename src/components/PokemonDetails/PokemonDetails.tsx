@@ -1,10 +1,10 @@
-import Styles from './PokemonDetails.module.css';
 import { Pokemon, EvolutionChain, PokemonStat } from '../../models/PokemonTypes';
 import { PokemonTypeColors } from '../../models/PokemonTypes';
 import { PokemonSpecies } from '../../models/PokemonTypes';
 import { EvolutionDetail } from '../../models/PokemonTypes';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
+import Styles from './PokemonDetails.module.scss';
 
 
 type PokemonDetailsProps = {

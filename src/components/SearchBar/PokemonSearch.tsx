@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import Styles from './PokemonSearch.module.css';
 import { motion } from 'framer-motion';
+import Styles from './PokemonSearch.module.scss';
 
 type PokemonSearchProps = {
   onSearch: (name: string) => void;

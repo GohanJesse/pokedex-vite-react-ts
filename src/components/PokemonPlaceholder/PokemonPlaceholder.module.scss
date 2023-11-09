@@ -1,0 +1,87 @@
+// .pokemonPlaceholder {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 320px;
+//   margin: 10px;
+//   height: 82vh;
+//   position: fixed;
+//   right: calc(10vw - 20px);
+//   padding: 0 15px;
+//   bottom: 0;
+//   margin-bottom: 0;
+//   border-radius: 20px 20px 0 0;
+//   box-shadow: #ededed 0 10px 10px;
+//   background-color: white;
+//   z-index: 0;
+// }
+
+// .placeholderPokemonDetails {
+//   color: #8f9396;
+//   font-size: 18px !important;
+//   text-align: center;
+// }
+
+// .pikachuPlaceholder {
+//   position: absolute;
+//   right: 0;
+//   left: 0;
+//   bottom: 77vh;
+//   margin-right: auto;
+//   margin-left: auto;
+//   object-fit: contain;
+//   image-rendering: pixelated;
+//   max-height: 22vh;
+// }
+
+// Variables
+$placeholder-width: 320px;
+$placeholder-margin: 10px;
+$placeholder-height: 82vh;
+$placeholder-position-right: calc(10vw - 20px);
+$placeholder-padding: 0 15px;
+$placeholder-radius: 20px 20px 0 0;
+$placeholder-shadow-color: #ededed;
+$placeholder-background: white;
+$placeholder-z-index: 0;
+
+$details-color: #8f9396;
+$details-font-size: 18px;
+$details-text-align: center;
+
+$pikachu-bottom: 77vh;
+$pikachu-max-height: 22vh;
+
+.pokemonPlaceholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $placeholder-width;
+  margin: $placeholder-margin 0 0;
+  height: $placeholder-height;
+  position: fixed;
+  right: $placeholder-position-right;
+  padding: $placeholder-padding;
+  bottom: 0;
+  border-radius: $placeholder-radius;
+  box-shadow: $placeholder-shadow-color 0 10px 10px;
+  background-color: $placeholder-background;
+  z-index: $placeholder-z-index;
+}
+
+.placeholderPokemonDetails {
+  color: $details-color;
+  font-size: $details-font-size !important;
+  text-align: $details-text-align;
+}
+
+.pikachuPlaceholder {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: $pikachu-bottom;
+  margin: auto;
+  object-fit: contain;
+  image-rendering: pixelated;
+  max-height: $pikachu-max-height;
+}

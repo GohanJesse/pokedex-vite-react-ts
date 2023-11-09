@@ -1,5 +1,5 @@
-import Styles from './PokemonCard.module.css';
 import { PokemonType, PokemonTypeColors } from '../../models/PokemonTypes';
+import Styles from './PokemonCard.module.scss';
 
 type PokemonCardProps = {
   image: string;

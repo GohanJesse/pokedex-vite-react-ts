@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
-import Styles from './PokemonGallery.module.css';
 import { Pokemon } from '../../models/PokemonTypes';
-import PokemonCard from '../PokemonCard/PokemonCard';
 import { motion } from 'framer-motion';
+import PokemonCard from '../PokemonCard/PokemonCard';
+import Styles from './PokemonGallery.module.scss';
 
 type PokemonGalleryProps = {
   pokemons: Pokemon[];
