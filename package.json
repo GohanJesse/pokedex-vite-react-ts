@@ -1,6 +1,7 @@
 {
   "name": "pokedex",
   "private": true,
+  "homepage": "https://gohanjesse.github.io/pokedex-vite-react-ts/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
